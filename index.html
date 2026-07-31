@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SabiPass AI — Your Sharp Socratic AI Tutor</title>
+    <style>
+        :root {
+            --primary: #0070f3;
+            --bg: #0a0a0a;
+            --surface: #121212;
+            --text: #ffffff;
+            --text-muted: #888888;
+            --border: #222222;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: var(--bg); color: var(--text); padding: 40px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; }
+        .container { max-width: 550px; width: 100%; display: flex; flex-direction: column; gap: 30px; }
+        header { text-align: center; margin-bottom: 10px; }
+        header h1 { font-size: 2.5rem; font-weight: 800; background: linear-gradient(to right, #0070f3, #00dfd8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+        header p { color: var(--text-muted); font-size: 1.1rem; }
+        .card { background-color: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 25px; }
+        .card h2 { font-size: 1.3rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        form { display: flex; flex-direction: column; gap: 15px; }
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group label { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+        input, select, textarea { background-color: #000; border: 1px solid var(--border); border-radius: 6px; padding: 12px; color: #fff; font-size: 1rem; width: 100%; transition: border 0.2s; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--primary); }
+        button { background-color: var(--primary); color: white; border: none; border-radius: 6px; padding: 14px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.2s; width: 100%; }
+        button:hover { background-color: #0051a8; }
+        button:disabled { background-color: #333; color: #777; cursor: not-allowed; }
+        .chat-container { display: flex; flex-direction: column; gap: 12px; height: 200px; overflow-y: auto; border: 1px solid var(--border); background: #000; padding: 12px; border-radius: 6px; margin-bottom: 15px; }
+        .msg { padding: 10px 14px; border-radius: 8px; max-width: 85%; font-size: 0.95rem; line-height: 1.4; }
+        .msg.user { background-color: #222; align-self: flex-end; }
+        .msg.ai { background-color: #004494; align-self: flex-start; }
+        .chat-input-row { display: flex; gap: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>SabiPass AI</h1>
+        <p>The sharp Socratic AI companion for Nigerian students.</p>
+    </header>
+
+    <!-- SECTION 1: WAITLIST SIGNUP FORM -->
+    <div class="card">
+        <h2>🚀 Join the Waitlist</h2>
+        <form id="waitlistForm">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" required placeholder="e.g. Tunde">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required placeholder="name@domain.com">
+            </div>
+            <div class="form-group">
+                <label for="class_level">Class Level</label>
+                <select id="class_level" required>
+                    <option value="" disabled selected>Select class level...</option>
+                    <option value="SSS 1">SSS 1</option>
+                    <option value="SSS 2">SSS 2</option>
+                    <option value="SSS 3">SSS 3</option>
+                    <option value="JSS Undergraduate/Other">Undergraduate / Other</option>
+                </select>
+            </div>
+            <button type="submit" id="waitlistBtn">Secure My Spot</button>
+        </form>
+    </div>
+
+    <!-- SECTION 2: AI DEMO CHAT INTERACTIVE COMPONENT -->
+    <div class="card">
+        <h2>💡 Chat with SabiPass SP (Demo)</h2>
+        <div class="chat-container" id="chatBox">
+            <div class="msg ai">Ask me any tough textbook question. I will guide you step-by-step, no spoonfeeding!</div>
+        </div>
+        <div class="chat-input-row">
+            <input type="text" id="aiPrompt" placeholder="Ask a question (e.g. Explain photosynthesis)...">
+            <button id="sendAiBtn" style="width: auto; padding: 0 20px;">Ask</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // YOUR LIVE DEPLOYED CLOUDFLARE WORKER ROUTER ADDRESS
+    const WORKER_URL = "https://workers.dev";
+
+    // ---------------------------------------------------------
+    // HANDLER: WAITLIST SUBMISSION
+    // ---------------------------------------------------------
+    document.getElementById("waitlistForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById("waitlistBtn");
+        btn.disabled = true;
+        btn.innerText = "Saving your spot...";
+
+        const payload = {
+            action: "waitlist_signup",
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            class_level: document.getElementById("class_level").value
+        };
+
+        try {
+            const res = await fetch(WORKER_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+            const data = await res.json();
+            
+            if (res.ok && data.success) {
+                alert(`Excellent choice, ${payload.name}! You are officially on the waitlist.`);
+                document.getElementById("waitlistForm").reset();
+            } else {
+                alert("Error: " + (data.error || "Unable to save signup info. Please check inputs."));
+            }
+        } catch (err) {
+            alert("Network error: Could not reach backend server.");
+        } finally {
+            btn.disabled = false;
+            btn.innerText = "Secure My Spot";
+        }
+    });
+
+    // ---------------------------------------------------------
+    // HANDLER: INTERACTIVE AI SOCRATIC DEMO CHAT
+    // ---------------------------------------------------------
+    document.getElementById("sendAiBtn").addEventListener("click", async () => {
+        const input = document.getElementById("aiPrompt");
+        const btn = document.getElementById("sendAiBtn");
+        const chatBox = document.getElementById("chatBox");
+        const promptText = input.value.trim();
+
+        if (!promptText) return;
+
+        // Append User Message to UI
+        const userMsg = document.createElement("div");
+        userMsg.className = "msg user";
+        userMsg.innerText = promptText;
+        chatBox.appendChild(userMsg);
+        input.value = "";
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        btn.disabled = true;
+        
+        // Append Floating Thinking Placeholder
+        const thinkingMsg = document.createElement("div");
+        thinkingMsg.className = "msg ai";
+        thinkingMsg.innerText = "Thinking...";
+        chatBox.appendChild(thinkingMsg);
+
+        try {
+            const res = await fetch(WORKER_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ action: "ai_demo", prompt: promptText })
+            });
+            const data = await res.json();
+
+            if (res.ok && data.choices && data.choices[0]) {
+                thinkingMsg.innerText = data.choices[0].message?.content || data.choices[0].messages?.content || data.choices[0].text || "No response content available.";
+            } else {
+                thinkingMsg.innerText = "System error: " + (data.error || "Unable to pull response token stream.");
+            }
+        } catch (err) {
+            thinkingMsg.innerText = "Network failure: Connection to AI gateway timed out.";
+        } finally {
+            btn.disabled = false;
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    });
+</script>
+</body>
+</html>
