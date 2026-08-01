@@ -11,6 +11,7 @@ const requiredKeys = [
   "RESEND_FROM",
   "GROQ_API_KEY"
 ];
+const optionalKeys = ["SUPABASE_SERVICE_ROLE_KEY"];
 const environments = ["production", "preview", "development"];
 
 if (!fs.existsSync(envPath)) {
@@ -28,8 +29,25 @@ if (missing.length) {
 
 ensureVercelProject();
 
-for (const key of requiredKeys) {
+for (const key of [...requiredKeys, ...optionalKeys].filter((key) => env[key])) {
   for (const target of environments) {
+    const removeResult = spawnSync(
+      "npx",
+      ["--yes", "vercel", "env", "rm", key, target, "--yes"],
+      {
+        cwd: root,
+        shell: process.platform === "win32",
+        stdio: ["ignore", "inherit", "pipe"]
+      }
+    );
+
+    const removeStderr = removeResult.stderr?.toString() || "";
+
+    if (removeResult.status !== 0 && !/not found|does not exist|missing/i.test(removeStderr)) {
+      console.error(removeStderr);
+      process.exit(removeResult.status || 1);
+    }
+
     const result = spawnSync(
       "npx",
       ["--yes", "vercel", "env", "add", key, target],
@@ -43,17 +61,12 @@ for (const key of requiredKeys) {
 
     const stderr = result.stderr?.toString() || "";
 
-    if (result.status !== 0 && /already exists/i.test(stderr)) {
-      console.log(`${key} already exists for ${target}; leaving current Vercel value unchanged.`);
-      continue;
-    }
-
     if (result.status !== 0) {
       console.error(stderr);
       process.exit(result.status || 1);
     }
 
-    console.log(`Added ${key} to ${target}.`);
+    console.log(`Synced ${key} to ${target}.`);
   }
 }
 

@@ -1,0 +1,57 @@
+{
+  "api/waitlist.js": {
+    "mtime": 1785565501.7362366,
+    "ast_hash": "47dbeffecadf798b2b5407965bd7b341",
+    "semantic_hash": "47dbeffecadf798b2b5407965bd7b341"
+  },
+  "package.json": {
+    "mtime": 1785547849.763623,
+    "ast_hash": "dd8448e3e10da4565132410939a464c4",
+    "semantic_hash": "dd8448e3e10da4565132410939a464c4"
+  },
+  "scripts/push-vercel-env.cjs": {
+    "mtime": 1785565503.601762,
+    "ast_hash": "bb2cb9cfce1aa9c9f92c59c45ad95a3a",
+    "semantic_hash": "bb2cb9cfce1aa9c9f92c59c45ad95a3a"
+  },
+  "src/App.jsx": {
+    "mtime": 1785566959.3421414,
+    "ast_hash": "1f09c6e0aec4c4a38c3660d2b23ed558",
+    "semantic_hash": "1f09c6e0aec4c4a38c3660d2b23ed558"
+  },
+  "src/main.jsx": {
+    "mtime": 1785553963.3213542,
+    "ast_hash": "7ff70199e1bcba9d7da480aa900dd8ff",
+    "semantic_hash": "7ff70199e1bcba9d7da480aa900dd8ff"
+  },
+  "tests/static-build.test.cjs": {
+    "mtime": 1785566822.2181542,
+    "ast_hash": "80b627a1d3d002db8fff0d639fe89413",
+    "semantic_hash": "80b627a1d3d002db8fff0d639fe89413"
+  },
+  "tests/waitlist-api.test.cjs": {
+    "mtime": 1785565507.8409617,
+    "ast_hash": "c65c96a4553435c1165feed035b4a1f2",
+    "semantic_hash": "c65c96a4553435c1165feed035b4a1f2"
+  },
+  "index.html": {
+    "mtime": 1785553966.4871905,
+    "ast_hash": "661333d87eb604c0dc991b9732de15e9",
+    "semantic_hash": "661333d87eb604c0dc991b9732de15e9"
+  },
+  "public/images/african-students-classroom.jpg": {
+    "mtime": 1785552566.3027723,
+    "ast_hash": "db1ee6528fa8614d0532c8e24e92b8f7",
+    "semantic_hash": "db1ee6528fa8614d0532c8e24e92b8f7"
+  },
+  "public/images/family-study-home.jpg": {
+    "mtime": 1785552571.1896355,
+    "ast_hash": "3f0c8140d29fbe2ef88207eeff317b03",
+    "semantic_hash": "3f0c8140d29fbe2ef88207eeff317b03"
+  },
+  "public/images/teacher-classroom-hands-raised.jpg": {
+    "mtime": 1785552568.5061235,
+    "ast_hash": "148e8e48f5d4f13b207ca58db568af9a",
+    "semantic_hash": "148e8e48f5d4f13b207ca58db568af9a"
+  }
+}

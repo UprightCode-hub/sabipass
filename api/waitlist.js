@@ -1,9 +1,12 @@
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
+const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const SUPABASE_REST_KEY = SUPABASE_SERVICE_ROLE_KEY || SUPABASE_ANON_KEY;
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const RESEND_FROM = process.env.RESEND_FROM || "no-reply@example.com";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const allowedRoles = new Set(["SSS 1", "SSS 2", "SSS 3", "JAMB", "Parent", "School Principal"]);
 
 module.exports = async (req, res) => {
   if (req.method !== "POST") {
@@ -12,10 +15,11 @@ module.exports = async (req, res) => {
     return;
   }
 
-  if (!SUPABASE_URL || !SUPABASE_ANON_KEY || !RESEND_API_KEY) {
+  if (!SUPABASE_URL || !SUPABASE_REST_KEY) {
+    console.log("[waitlist] Missing required Supabase environment variables");
     res.status(500).json({
       success: false,
-      error: "Missing Supabase or Resend environment variables."
+      error: "Missing Supabase environment variables."
     });
     return;
   }
@@ -31,12 +35,20 @@ module.exports = async (req, res) => {
 
   const name = String(body.name || "").trim();
   const email = String(body.email || "").trim().toLowerCase();
-  const class_level = String(body.class_level || "").trim();
+  const role = String(body.role || body.Role || body.class_level || "").trim();
 
-  if (!name || !email || !class_level) {
+  if (!name || !email || !role) {
     res.status(400).json({
       success: false,
-      error: "Name, email, and class level are required."
+      error: "Name, email, and role are required."
+    });
+    return;
+  }
+
+  if (!allowedRoles.has(role)) {
+    res.status(400).json({
+      success: false,
+      error: "Please choose a valid role."
     });
     return;
   }
@@ -50,15 +62,16 @@ module.exports = async (req, res) => {
   }
 
   try {
+    console.log("[waitlist] Attempting Supabase insert", { email, role });
     const supabaseResponse = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
       method: "POST",
       headers: {
-        apikey: SUPABASE_ANON_KEY,
-        Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+        apikey: SUPABASE_REST_KEY,
+        Authorization: `Bearer ${SUPABASE_REST_KEY}`,
         "Content-Type": "application/json",
-        Prefer: "return=minimal"
+        Prefer: "return=representation"
       },
-      body: JSON.stringify([{ name, email, class_level, created_at: new Date().toISOString() }])
+      body: JSON.stringify([{ Name: name, Email: email, Role: role }])
     });
 
     if (!supabaseResponse.ok) {
@@ -67,6 +80,17 @@ module.exports = async (req, res) => {
       res.status(502).json({
         success: false,
         error: "We could not save your waitlist request yet. Please try again."
+      });
+      return;
+    }
+
+    console.log("[waitlist] Supabase insert succeeded", { email, role });
+
+    if (!RESEND_API_KEY) {
+      console.log("[waitlist] RESEND_API_KEY is not configured; skipping confirmation email");
+      res.status(200).json({
+        success: true,
+        warning: "You are on the early access queue - SP-006."
       });
       return;
     }
@@ -81,7 +105,7 @@ module.exports = async (req, res) => {
         from: RESEND_FROM,
         to: email,
         subject: "Your SabiPass waitlist request is confirmed",
-        html: buildConfirmationEmail({ name, class_level })
+        html: buildConfirmationEmail({ name, role })
       })
     });
 
@@ -95,9 +119,10 @@ module.exports = async (req, res) => {
       return;
     }
 
-    res.status(200).json({ success: true });
+    console.log("[waitlist] Confirmation email sent", { email });
+    res.status(200).json({ success: true, queueCode: "SP-006" });
   } catch (error) {
-    console.error(error);
+    console.error("[waitlist] Unexpected error", error);
     res.status(500).json({
       success: false,
       error: "Unexpected server error. Please try again."
@@ -114,16 +139,16 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
-function buildConfirmationEmail({ name, class_level }) {
+function buildConfirmationEmail({ name, role }) {
   const safeName = escapeHtml(name);
-  const safeClassLevel = escapeHtml(class_level);
+  const safeRole = escapeHtml(role);
 
   return `
     <div style="font-family: Inter, Arial, sans-serif; color: #111312; line-height: 1.6;">
       <p>Hi ${safeName},</p>
       <p>You are officially on the SabiPass AI waitlist.</p>
       <p>
-        We received your request for <strong>${safeClassLevel}</strong> support. SabiPass is
+        We received your request for <strong>${safeRole}</strong> support. SabiPass is
         being built as a Socratic AI tutor for Nigerian students preparing for WAEC, NECO,
         and JAMB - guiding students step by step instead of spoon-feeding answers.
       </p>

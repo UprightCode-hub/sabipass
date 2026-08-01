@@ -78,12 +78,12 @@ async function run() {
     const handler = loadHandler({
       SUPABASE_URL: "",
       SUPABASE_ANON_KEY: "",
-      RESEND_API_KEY: ""
+      SUPABASE_SERVICE_ROLE_KEY: ""
     });
     const res = await invoke(handler, { method: "POST", body: {} });
     assert.equal(res.statusCode, 500);
     assert.equal(res.payload.success, false);
-    assert.match(res.payload.error, /Missing Supabase or Resend/);
+    assert.match(res.payload.error, /Missing Supabase/);
   }
 
   {
@@ -104,10 +104,20 @@ async function run() {
     const handler = loadHandler(validEnv);
     const res = await invoke(handler, {
       method: "POST",
-      body: { name: "Ada", email: "not-email", class_level: "SSS 2" }
+      body: { name: "Ada", email: "not-email", role: "SSS 2" }
     });
     assert.equal(res.statusCode, 400);
     assert.match(res.payload.error, /valid email/);
+  }
+
+  {
+    const handler = loadHandler(validEnv);
+    const res = await invoke(handler, {
+      method: "POST",
+      body: { name: "Ada", email: "ada@example.com", role: "Graduate" }
+    });
+    assert.equal(res.statusCode, 400);
+    assert.match(res.payload.error, /valid role/);
   }
 
   {
@@ -118,20 +128,20 @@ async function run() {
     const handler = loadHandler(validEnv);
     const res = await invoke(handler, {
       method: "POST",
-      body: { name: " Ada <script> ", email: "ADA@EXAMPLE.COM ", class_level: "SSS 2" }
+      body: { name: " Ada <script> ", email: "ADA@EXAMPLE.COM ", role: "SSS 2" }
     });
 
     assert.equal(res.statusCode, 200);
-    assert.deepEqual(res.payload, { success: true });
+    assert.deepEqual(res.payload, { success: true, queueCode: "SP-006" });
     assert.equal(calls.length, 2);
     assert.equal(calls[0].url, "https://project.supabase.co/rest/v1/waitlist");
     assert.equal(calls[0].options.headers.apikey, "anon-test-key");
     assert.equal(calls[1].url, "https://api.resend.com/emails");
 
     const supabaseBody = JSON.parse(calls[0].options.body)[0];
-    assert.equal(supabaseBody.name, "Ada <script>");
-    assert.equal(supabaseBody.email, "ada@example.com");
-    assert.equal(supabaseBody.class_level, "SSS 2");
+    assert.equal(supabaseBody.Name, "Ada <script>");
+    assert.equal(supabaseBody.Email, "ada@example.com");
+    assert.equal(supabaseBody.Role, "SSS 2");
 
     const resendBody = JSON.parse(calls[1].options.body);
     assert.equal(resendBody.to, "ada@example.com");
@@ -140,11 +150,31 @@ async function run() {
   }
 
   {
+    const calls = createFetchMock([
+      { ok: true, status: 201 },
+      { ok: true, status: 200 }
+    ]);
+    const handler = loadHandler({
+      ...validEnv,
+      SUPABASE_ANON_KEY: "anon-test-key",
+      SUPABASE_SERVICE_ROLE_KEY: "service-role-test-key"
+    });
+    const res = await invoke(handler, {
+      method: "POST",
+      body: { name: "Ada", email: "ada@example.com", role: "SSS 2" }
+    });
+
+    assert.equal(res.statusCode, 200);
+    assert.equal(calls[0].options.headers.apikey, "service-role-test-key");
+    assert.equal(calls[0].options.headers.Authorization, "Bearer service-role-test-key");
+  }
+
+  {
     createFetchMock([{ ok: false, status: 409, text: "duplicate" }]);
     const handler = loadHandler(validEnv);
     const res = await invoke(handler, {
       method: "POST",
-      body: { name: "Ada", email: "ada@example.com", class_level: "SSS 2" }
+      body: { name: "Ada", email: "ada@example.com", role: "SSS 2" }
     });
     assert.equal(res.statusCode, 502);
     assert.equal(res.payload.success, false);
@@ -159,11 +189,24 @@ async function run() {
     const handler = loadHandler(validEnv);
     const res = await invoke(handler, {
       method: "POST",
-      body: { name: "Ada", email: "ada@example.com", class_level: "SSS 2" }
+      body: { name: "Ada", email: "ada@example.com", role: "SSS 2" }
     });
     assert.equal(res.statusCode, 202);
     assert.equal(res.payload.success, true);
     assert.match(res.payload.warning, /confirmation email/);
+  }
+
+  {
+    const calls = createFetchMock([{ ok: true, status: 201 }]);
+    const handler = loadHandler({ ...validEnv, RESEND_API_KEY: "" });
+    const res = await invoke(handler, {
+      method: "POST",
+      body: { name: "Ada", email: "ada@example.com", role: "School Principal" }
+    });
+    assert.equal(res.statusCode, 200);
+    assert.equal(res.payload.success, true);
+    assert.match(res.payload.warning, /early access queue/);
+    assert.equal(calls.length, 1);
   }
 }
 
