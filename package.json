@@ -1,0 +1,22 @@
+{
+  "name": "sabipass-marketing",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "npm run test:api && npm run test:static",
+    "test:api": "node tests/waitlist-api.test.cjs",
+    "test:static": "node tests/static-build.test.cjs",
+    "vercel:env": "node scripts/push-vercel-env.cjs"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.7",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "lucide-react": "^0.469.0"
+  },
+  "devDependencies": {}
+}
