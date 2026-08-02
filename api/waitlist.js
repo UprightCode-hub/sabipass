@@ -6,7 +6,14 @@ const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const RESEND_FROM = process.env.RESEND_FROM || "no-reply@example.com";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const allowedRoles = new Set(["SSS 1", "SSS 2", "SSS 3", "JAMB", "Parent", "School Principal"]);
+const allowedRoles = new Set([
+  "SSS 1",
+  "SSS 2",
+  "SSS 3",
+  "JAMB",
+  "Parent",
+  "School Principal",
+]);
 
 module.exports = async (req, res) => {
   if (req.method !== "POST") {
@@ -19,7 +26,7 @@ module.exports = async (req, res) => {
     console.log("[waitlist] Missing required Supabase environment variables");
     res.status(500).json({
       success: false,
-      error: "Missing Supabase environment variables."
+      error: "Missing Supabase environment variables.",
     });
     return;
   }
@@ -27,20 +34,25 @@ module.exports = async (req, res) => {
   let body;
 
   try {
-    body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
+    body =
+      typeof req.body === "string"
+        ? JSON.parse(req.body || "{}")
+        : req.body || {};
   } catch (error) {
     res.status(400).json({ success: false, error: "Invalid request body." });
     return;
   }
 
   const name = String(body.name || "").trim();
-  const email = String(body.email || "").trim().toLowerCase();
+  const email = String(body.email || "")
+    .trim()
+    .toLowerCase();
   const role = String(body.role || body.Role || body.class_level || "").trim();
 
   if (!name || !email || !role) {
     res.status(400).json({
       success: false,
-      error: "Name, email, and role are required."
+      error: "Name, email, and role are required.",
     });
     return;
   }
@@ -48,7 +60,7 @@ module.exports = async (req, res) => {
   if (!allowedRoles.has(role)) {
     res.status(400).json({
       success: false,
-      error: "Please choose a valid role."
+      error: "Please choose a valid role.",
     });
     return;
   }
@@ -56,30 +68,35 @@ module.exports = async (req, res) => {
   if (!emailPattern.test(email)) {
     res.status(400).json({
       success: false,
-      error: "Please enter a valid email address."
+      error: "Please enter a valid email address.",
     });
     return;
   }
 
   try {
     console.log("[waitlist] Attempting Supabase insert", { email, role });
-    const supabaseResponse = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
-      method: "POST",
-      headers: {
-        apikey: SUPABASE_REST_KEY,
-        Authorization: `Bearer ${SUPABASE_REST_KEY}`,
-        "Content-Type": "application/json",
-        Prefer: "return=representation"
+    const supabaseResponse = await fetch(
+      `${SUPABASE_URL}/rest/v1/waitlist_signups`,
+      {
+        method: "POST",
+        headers: {
+          apikey: SUPABASE_REST_KEY,
+          Authorization: `Bearer ${SUPABASE_REST_KEY}`,
+          "Content-Type": "application/json",
+          Prefer: "return=representation",
+        },
+        body: JSON.stringify([{ name: name, email: email, class_level: role }]),
       },
-      body: JSON.stringify([{ Name: name, Email: email, Role: role }])
-    });
+    );
 
     if (!supabaseResponse.ok) {
       const errorText = await supabaseResponse.text();
-      console.error(`Supabase insert failed: ${supabaseResponse.status} ${errorText}`);
+      console.error(
+        `Supabase insert failed: ${supabaseResponse.status} ${errorText}`,
+      );
       res.status(502).json({
         success: false,
-        error: "We could not save your waitlist request yet. Please try again."
+        error: "We could not save your waitlist request yet. Please try again.",
       });
       return;
     }
@@ -87,10 +104,12 @@ module.exports = async (req, res) => {
     console.log("[waitlist] Supabase insert succeeded", { email, role });
 
     if (!RESEND_API_KEY) {
-      console.log("[waitlist] RESEND_API_KEY is not configured; skipping confirmation email");
+      console.log(
+        "[waitlist] RESEND_API_KEY is not configured; skipping confirmation email",
+      );
       res.status(200).json({
         success: true,
-        warning: "You are on the early access queue - SP-006."
+        warning: "You are on the early access queue - SP-006.",
       });
       return;
     }
@@ -99,22 +118,25 @@ module.exports = async (req, res) => {
       method: "POST",
       headers: {
         Authorization: `Bearer ${RESEND_API_KEY}`,
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         from: RESEND_FROM,
         to: email,
         subject: "Your SabiPass waitlist request is confirmed",
-        html: buildConfirmationEmail({ name, role })
-      })
+        html: buildConfirmationEmail({ name, role }),
+      }),
     });
 
     if (!resendResponse.ok) {
       const errorText = await resendResponse.text();
-      console.error(`Resend email failed: ${resendResponse.status} ${errorText}`);
+      console.error(
+        `Resend email failed: ${resendResponse.status} ${errorText}`,
+      );
       res.status(202).json({
         success: true,
-        warning: "Your spot was saved, but the confirmation email could not be sent yet."
+        warning:
+          "Your spot was saved, but the confirmation email could not be sent yet.",
       });
       return;
     }
@@ -125,7 +147,7 @@ module.exports = async (req, res) => {
     console.error("[waitlist] Unexpected error", error);
     res.status(500).json({
       success: false,
-      error: "Unexpected server error. Please try again."
+      error: "Unexpected server error. Please try again.",
     });
   }
 };
