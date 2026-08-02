@@ -175,7 +175,8 @@ async function run() {
         ok: false,
         status: 409,
         text: 'duplicate key value violates unique constraint "waitlist_signups_unique_email" (SQLSTATE 23505)'
-      }
+      },
+      { ok: true, status: 200 }
     ]);
     const handler = loadHandler(validEnv);
     const res = await invoke(handler, {
@@ -184,7 +185,7 @@ async function run() {
     });
     assert.equal(res.statusCode, 200);
     assert.equal(res.payload.success, true);
-    assert.match(res.payload.warning, /already on the waitlist/i);
+    assert.match(res.payload.warning, /resent your confirmation email/i);
   }
 
   {

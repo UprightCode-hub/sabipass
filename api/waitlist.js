@@ -98,14 +98,52 @@ module.exports = async (req, res) => {
         normalizedErrorText.includes("already exists");
 
       if (isDuplicateEmail) {
-        console.log("[waitlist] Duplicate email detected; treating as existing signup", {
+        console.log("[waitlist] Duplicate email detected; retrying confirmation email", {
           email,
           role,
         });
-        res.status(200).json({
-          success: true,
-          warning: "You're already on the waitlist — we'll be in touch!",
-        });
+
+        if (!BREVO_API_KEY) {
+          res.status(200).json({
+            success: true,
+            warning: "You're already on the waitlist — we'll be in touch!",
+          });
+          return;
+        }
+
+        try {
+          const retryBrevoResponse = await fetch("https://api.brevo.com/v3/smtp/email", {
+            method: "POST",
+            headers: {
+              "api-key": BREVO_API_KEY,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              sender: { name: "Sabipass", email: "sabipass.edu@gmail.com" },
+              to: [{ email }],
+              subject: "Your SabiPass waitlist request is confirmed",
+              htmlContent: buildConfirmationEmail({ name, role }),
+            }),
+          });
+
+          if (!retryBrevoResponse.ok) {
+            res.status(200).json({
+              success: true,
+              warning: "You're already on the waitlist — we'll be in touch!",
+            });
+            return;
+          }
+
+          res.status(200).json({
+            success: true,
+            warning: "You're already on the waitlist — we've resent your confirmation email.",
+          });
+        } catch (error) {
+          res.status(200).json({
+            success: true,
+            warning: "You're already on the waitlist — we'll be in touch!",
+          });
+        }
         return;
       }
 
