@@ -2,8 +2,7 @@ const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const SUPABASE_REST_KEY = SUPABASE_SERVICE_ROLE_KEY || SUPABASE_ANON_KEY;
-const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const RESEND_FROM = process.env.RESEND_FROM || "no-reply@example.com";
+const BREVO_API_KEY = process.env.BREVO_API_KEY;
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const allowedRoles = new Set([
@@ -91,6 +90,25 @@ module.exports = async (req, res) => {
 
     if (!supabaseResponse.ok) {
       const errorText = await supabaseResponse.text();
+      const normalizedErrorText = String(errorText || "").toLowerCase();
+      const isDuplicateEmail =
+        normalizedErrorText.includes("unique_email") ||
+        normalizedErrorText.includes("23505") ||
+        normalizedErrorText.includes("duplicate") ||
+        normalizedErrorText.includes("already exists");
+
+      if (isDuplicateEmail) {
+        console.log("[waitlist] Duplicate email detected; treating as existing signup", {
+          email,
+          role,
+        });
+        res.status(200).json({
+          success: true,
+          warning: "You're already on the waitlist — we'll be in touch!",
+        });
+        return;
+      }
+
       console.error(
         `Supabase insert failed: ${supabaseResponse.status} ${errorText}`,
       );
@@ -103,9 +121,9 @@ module.exports = async (req, res) => {
 
     console.log("[waitlist] Supabase insert succeeded", { email, role });
 
-    if (!RESEND_API_KEY) {
+    if (!BREVO_API_KEY) {
       console.log(
-        "[waitlist] RESEND_API_KEY is not configured; skipping confirmation email",
+        "[waitlist] BREVO_API_KEY is not configured; skipping confirmation email",
       );
       res.status(200).json({
         success: true,
@@ -114,29 +132,26 @@ module.exports = async (req, res) => {
       return;
     }
 
-    const resendResponse = await fetch("https://api.resend.com/emails", {
+    const brevoResponse = await fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${RESEND_API_KEY}`,
+        "api-key": BREVO_API_KEY,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: RESEND_FROM,
-        to: email,
+        sender: { name: "Sabipass", email: "sabipass.edu@gmail.com" },
+        to: [{ email }],
         subject: "Your SabiPass waitlist request is confirmed",
-        html: buildConfirmationEmail({ name, role }),
+        htmlContent: buildConfirmationEmail({ name, role }),
       }),
     });
 
-    if (!resendResponse.ok) {
-      const errorText = await resendResponse.text();
-      console.error(
-        `Resend email failed: ${resendResponse.status} ${errorText}`,
-      );
+    if (!brevoResponse.ok) {
+      const errorText = await brevoResponse.text();
+      console.error(`Brevo email failed: ${brevoResponse.status} ${errorText}`);
       res.status(202).json({
         success: true,
-        warning:
-          "Your spot was saved, but the confirmation email could not be sent yet.",
+        warning: "Your spot was saved, but the confirmation email could not be sent yet.",
       });
       return;
     }

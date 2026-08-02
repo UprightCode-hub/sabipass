@@ -59,8 +59,7 @@ function createFetchMock(responses) {
 const validEnv = {
   SUPABASE_URL: "https://project.supabase.co",
   SUPABASE_ANON_KEY: "anon-test-key",
-  RESEND_API_KEY: "resend-test-key",
-  RESEND_FROM: "SabiPass <hello@sabipass.test>"
+  BREVO_API_KEY: "brevo-test-key"
 };
 
 async function run() {
@@ -134,19 +133,20 @@ async function run() {
     assert.equal(res.statusCode, 200);
     assert.deepEqual(res.payload, { success: true, queueCode: "SP-006" });
     assert.equal(calls.length, 2);
-    assert.equal(calls[0].url, "https://project.supabase.co/rest/v1/waitlist");
+    assert.equal(calls[0].url, "https://project.supabase.co/rest/v1/waitlist_signups");
     assert.equal(calls[0].options.headers.apikey, "anon-test-key");
-    assert.equal(calls[1].url, "https://api.resend.com/emails");
+    assert.equal(calls[1].url, "https://api.brevo.com/v3/smtp/email");
 
     const supabaseBody = JSON.parse(calls[0].options.body)[0];
-    assert.equal(supabaseBody.Name, "Ada <script>");
-    assert.equal(supabaseBody.Email, "ada@example.com");
-    assert.equal(supabaseBody.Role, "SSS 2");
+    assert.equal(supabaseBody.name, "Ada <script>");
+    assert.equal(supabaseBody.email, "ada@example.com");
+    assert.equal(supabaseBody.class_level, "SSS 2");
 
-    const resendBody = JSON.parse(calls[1].options.body);
-    assert.equal(resendBody.to, "ada@example.com");
-    assert.match(resendBody.html, /Ada &lt;script&gt;/);
-    assert.doesNotMatch(resendBody.html, /Hi Ada <script>/);
+    const brevoBody = JSON.parse(calls[1].options.body);
+    assert.equal(brevoBody.to[0].email, "ada@example.com");
+    assert.equal(brevoBody.sender.email, "sabipass.edu@gmail.com");
+    assert.match(brevoBody.htmlContent, /Ada &lt;script&gt;/);
+    assert.doesNotMatch(brevoBody.htmlContent, /Hi Ada <script>/);
   }
 
   {
@@ -170,15 +170,21 @@ async function run() {
   }
 
   {
-    createFetchMock([{ ok: false, status: 409, text: "duplicate" }]);
+    createFetchMock([
+      {
+        ok: false,
+        status: 409,
+        text: 'duplicate key value violates unique constraint "waitlist_signups_unique_email" (SQLSTATE 23505)'
+      }
+    ]);
     const handler = loadHandler(validEnv);
     const res = await invoke(handler, {
       method: "POST",
       body: { name: "Ada", email: "ada@example.com", role: "SSS 2" }
     });
-    assert.equal(res.statusCode, 502);
-    assert.equal(res.payload.success, false);
-    assert.match(res.payload.error, /could not save/i);
+    assert.equal(res.statusCode, 200);
+    assert.equal(res.payload.success, true);
+    assert.match(res.payload.warning, /already on the waitlist/i);
   }
 
   {
@@ -198,7 +204,7 @@ async function run() {
 
   {
     const calls = createFetchMock([{ ok: true, status: 201 }]);
-    const handler = loadHandler({ ...validEnv, RESEND_API_KEY: "" });
+    const handler = loadHandler({ ...validEnv, BREVO_API_KEY: "" });
     const res = await invoke(handler, {
       method: "POST",
       body: { name: "Ada", email: "ada@example.com", role: "School Principal" }
