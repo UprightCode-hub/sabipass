@@ -83,7 +83,7 @@ module.exports = async (req, res) => {
           apikey: SUPABASE_REST_KEY,
           Authorization: `Bearer ${SUPABASE_REST_KEY}`,
           "Content-Type": "application/json",
-          Prefer: "return=representation",
+          Prefer: "return=minimal"
         },
         body: JSON.stringify([{ name: name, email: email, class_level: role }]),
       },
