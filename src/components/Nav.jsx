@@ -4,9 +4,7 @@ function Nav({ currentPath }) {
   return (
     <nav className="top-nav" aria-label="Primary navigation">
       <a className="brand" href="/" aria-label="SabiPass AI home">
-        <span className="brand-mark" aria-hidden="true">
-          SP
-        </span>
+        <img className="brand-mark" src="/sabipass-logo.png" alt="" aria-hidden="true" />
         <span>SabiPass AI</span>
       </a>
       <div className="nav-links">

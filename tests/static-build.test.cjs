@@ -33,12 +33,14 @@ assert.match(src, /Stuck on a WAEC question\? SabiPass asks you the next questio
 assert.match(src, /Try it now/);
 assert.match(src, /Try it with no data/);
 assert.match(src, /SabiPass is helping right now/);
-assert.match(src, /Make the wrong choice/);
-assert.match(src, /See the hint/);
+assert.match(src, /SP is thinking\.\.\./);
 assert.match(src, /Get early access\./);
 assert.match(src, /School Principal/);
 assert.match(src, /\/how-it-works/);
-assert.match(src, /\/images\/african-students-classroom\.jpg/);
+assert.doesNotMatch(src, /JAMB Physics - Vectors/);
+assert.doesNotMatch(src, /Make the wrong choice/);
+assert.doesNotMatch(src, /See the hint/);
+assert.doesNotMatch(src, /\/images\/african-students-classroom\.jpg/);
 assert.doesNotMatch(src, /images\.unsplash\.com/);
 assert.doesNotMatch(src, /alert\(/);
 assert.doesNotMatch(src, /RESEND_API_KEY|RESEND_FROM|SUPABASE_ANON_KEY/);
@@ -68,9 +70,16 @@ assert.match(explainerApi, /TWO MODES FOR YOU/);
 
 assert.doesNotMatch(css, /0070f3|00dfd8|gradient\(to right|purple|indigo/i);
 assert.match(css, /prefers-reduced-motion/);
-assert.match(css, /Fraunces/);
-assert.match(css, /--board: #12372a/);
-assert.match(css, /--lagos-blue: #245f73/);
+assert.doesNotMatch(css, /Fraunces|Georgia|,\s*serif\b/);
+assert.match(html, /\/sabipass-logo\.png/);
+assert.match(src, /\/sabipass-logo\.png/);
+assert.match(css, /prefers-color-scheme: dark/);
+assert.match(css, /--bg: #070708/);
+assert.match(css, /--text: #f6f3ea/);
+assert.match(css, /--accent: #f8b818/);
+assert.match(css, /0 0 28px rgba\(248, 184, 24, 0\.34\)/);
+assert.match(css, /0 18px 60px rgba\(0, 0, 0, 0\.48\)/);
+assert.match(css, /backdrop-filter: blur\(14px\)/);
 assert.match(css, /@media \(hover: hover\) and \(pointer: fine\)/);
 assert.match(css, /scroll-snap-type: x mandatory/);
 

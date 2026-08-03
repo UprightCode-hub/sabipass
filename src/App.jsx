@@ -12,9 +12,6 @@ function HomePage() {
   return (
     <>
       <section className="hero-section" id="top">
-        <div className="hero-media" aria-hidden="true">
-          <img src="/images/african-students-classroom.jpg" alt="" />
-        </div>
         <div className="hero-copy">
           <h1>Stuck on a WAEC question? SabiPass asks you the next question — not the answer.</h1>
           <p>

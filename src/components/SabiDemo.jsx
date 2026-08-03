@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Bot, CloudOff, RotateCcw, Send, Sparkles } from "lucide-react";
+import { Bot, CloudOff, Send, Sparkles } from "lucide-react";
 
 const starterMessage = {
   role: "assistant",
@@ -31,17 +31,17 @@ const topicMessages = {
   ]
 };
 
+const minimumThinkingMs = 1200;
+
 function SabiDemo() {
   const [topic, setTopic] = useState(topics[0]);
   const [messages, setMessages] = useState([starterMessage, ...topicMessages[topics[0]]]);
   const [input, setInput] = useState("");
   const [status, setStatus] = useState("idle");
   const [offline, setOffline] = useState(false);
-  const [mistakeStep, setMistakeStep] = useState("question");
 
   useEffect(() => {
     setMessages([starterMessage, ...topicMessages[topic]]);
-    setMistakeStep("question");
   }, [topic]);
 
   const submitQuestion = async (event) => {
@@ -53,6 +53,7 @@ function SabiDemo() {
     setMessages(nextMessages);
     setInput("");
     setStatus("loading");
+    const thinkingStartedAt = Date.now();
 
     try {
       const response = await fetch("/api/explainer", {
@@ -61,14 +62,25 @@ function SabiDemo() {
         body: JSON.stringify({ message: question, history: nextMessages.slice(-6) })
       });
       const data = await response.json().catch(() => ({}));
+      const thinkingTimeLeft = Math.max(0, minimumThinkingMs - (Date.now() - thinkingStartedAt));
 
       if (!response.ok || !data.reply) {
+        if (thinkingTimeLeft > 0) {
+          await new Promise((resolve) => setTimeout(resolve, thinkingTimeLeft));
+        }
         throw new Error(data.error || "SP is not available yet.");
       }
 
+      if (thinkingTimeLeft > 0) {
+        await new Promise((resolve) => setTimeout(resolve, thinkingTimeLeft));
+      }
       setMessages((current) => [...current, { role: "assistant", content: data.reply }]);
       setStatus("idle");
     } catch (error) {
+      const thinkingTimeLeft = Math.max(0, minimumThinkingMs - (Date.now() - thinkingStartedAt));
+      if (thinkingTimeLeft > 0) {
+        await new Promise((resolve) => setTimeout(resolve, thinkingTimeLeft));
+      }
       setMessages((current) => [
         ...current,
         {
@@ -133,7 +145,16 @@ function SabiDemo() {
                   {message.content}
                 </p>
               ))}
-              {status === "loading" ? <p className="chat-bubble assistant">Thinking...</p> : null}
+              {status === "loading" ? (
+                <div className="chat-bubble assistant typing-indicator" role="status" aria-live="polite">
+                  <span>SP is thinking...</span>
+                  <span className="typing-dots" aria-hidden="true">
+                    <i />
+                    <i />
+                    <i />
+                  </span>
+                </div>
+              ) : null}
             </div>
             <form className="chat-form" onSubmit={submitQuestion}>
               <input
@@ -147,34 +168,6 @@ function SabiDemo() {
               </button>
             </form>
           </div>
-
-          <aside className="mistake-card">
-            <span className="micro-label">JAMB Physics - Vectors</span>
-            {mistakeStep === "question" ? (
-              <p>Question: Two perpendicular vectors are 3N and 4N. What should you do before choosing an option?</p>
-            ) : null}
-            {mistakeStep === "mistake" ? (
-              <p>Student: "I will add 3 + 4, so the resultant is 7N."</p>
-            ) : null}
-            {mistakeStep === "hint" ? (
-              <p>
-                SabiPass: "That addition works only when they point the same way. Since they are
-                perpendicular, what triangle do the two vectors form?"
-              </p>
-            ) : null}
-            <div className="demo-actions">
-              <button type="button" onClick={() => setMistakeStep("question")}>
-                <RotateCcw size={15} aria-hidden="true" />
-                Reset
-              </button>
-              <button type="button" onClick={() => setMistakeStep("mistake")}>
-                Make the wrong choice
-              </button>
-              <button type="button" onClick={() => setMistakeStep("hint")}>
-                See the hint
-              </button>
-            </div>
-          </aside>
         </div>
       </div>
     </section>
