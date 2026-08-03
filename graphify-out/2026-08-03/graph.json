@@ -42,8 +42,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "package.json",
-      "id": "package",
-      "community_name": "Frontend App UI"
+      "id": "package"
     },
     {
       "label": "name",
@@ -53,8 +52,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "name",
-      "id": "package_name",
-      "community_name": "Frontend App UI"
+      "id": "package_name"
     },
     {
       "label": "version",
@@ -64,8 +62,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "version",
-      "id": "package_version",
-      "community_name": "Frontend App UI"
+      "id": "package_version"
     },
     {
       "label": "private",
@@ -75,8 +72,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "private",
-      "id": "package_private",
-      "community_name": "Frontend App UI"
+      "id": "package_private"
     },
     {
       "label": "scripts",
@@ -86,8 +82,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "scripts",
-      "id": "package_scripts",
-      "community_name": "Frontend App UI"
+      "id": "package_scripts"
     },
     {
       "label": "dev",
@@ -97,8 +92,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "dev",
-      "id": "package_scripts_dev",
-      "community_name": "Frontend App UI"
+      "id": "package_scripts_dev"
     },
     {
       "label": "build",
@@ -108,8 +102,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "build",
-      "id": "package_scripts_build",
-      "community_name": "Frontend App UI"
+      "id": "package_scripts_build"
     },
     {
       "label": "preview",
@@ -119,8 +112,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "preview",
-      "id": "package_scripts_preview",
-      "community_name": "Frontend App UI"
+      "id": "package_scripts_preview"
     },
     {
       "label": "test",
@@ -130,8 +122,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "test",
-      "id": "package_scripts_test",
-      "community_name": "Frontend App UI"
+      "id": "package_scripts_test"
     },
     {
       "label": "test:api",
@@ -141,8 +132,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "test:api",
-      "id": "package_scripts_test_api",
-      "community_name": "Frontend App UI"
+      "id": "package_scripts_test_api"
     },
     {
       "label": "test:static",
@@ -152,8 +142,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "test:static",
-      "id": "package_scripts_test_static",
-      "community_name": "Frontend App UI"
+      "id": "package_scripts_test_static"
     },
     {
       "label": "vercel:env",
@@ -163,8 +152,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "vercel:env",
-      "id": "package_scripts_vercel_env",
-      "community_name": "Frontend App UI"
+      "id": "package_scripts_vercel_env"
     },
     {
       "label": "dependencies",
@@ -174,8 +162,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "dependencies",
-      "id": "package_dependencies",
-      "community_name": "Static Build Tests"
+      "id": "package_dependencies"
     },
     {
       "label": "@vitejs/plugin-react",
@@ -185,8 +172,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "@vitejs/plugin-react",
-      "id": "package_dependencies_vitejs_plugin_react",
-      "community_name": "Static Build Tests"
+      "id": "package_dependencies_vitejs_plugin_react"
     },
     {
       "label": "@vitejs/plugin-react",
@@ -196,8 +182,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "@vitejs/plugin-react",
-      "id": "vitejs_plugin_react",
-      "community_name": "Static Build Tests"
+      "id": "vitejs_plugin_react"
     },
     {
       "label": "vite",
@@ -207,8 +192,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "vite",
-      "id": "package_dependencies_vite",
-      "community_name": "Static Build Tests"
+      "id": "package_dependencies_vite"
     },
     {
       "label": "vite",
@@ -218,8 +202,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "vite",
-      "id": "vite",
-      "community_name": "Static Build Tests"
+      "id": "vite"
     },
     {
       "label": "react",
@@ -229,8 +212,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "react",
-      "id": "package_dependencies_react",
-      "community_name": "Static Build Tests"
+      "id": "package_dependencies_react"
     },
     {
       "label": "react",
@@ -240,8 +222,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "react",
-      "id": "react",
-      "community_name": "Static Build Tests"
+      "id": "react"
     },
     {
       "label": "react-dom",
@@ -251,8 +232,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "react-dom",
-      "id": "package_dependencies_react_dom",
-      "community_name": "Static Build Tests"
+      "id": "package_dependencies_react_dom"
     },
     {
       "label": "react-dom",
@@ -262,8 +242,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "react-dom",
-      "id": "react_dom",
-      "community_name": "Static Build Tests"
+      "id": "react_dom"
     },
     {
       "label": "lucide-react",
@@ -273,8 +252,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "lucide-react",
-      "id": "package_dependencies_lucide_react",
-      "community_name": "Static Build Tests"
+      "id": "package_dependencies_lucide_react"
     },
     {
       "label": "lucide-react",
@@ -284,8 +262,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "lucide-react",
-      "id": "lucide_react",
-      "community_name": "Static Build Tests"
+      "id": "lucide_react"
     },
     {
       "label": "devDependencies",
@@ -295,8 +272,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "devdependencies",
-      "id": "package_devdependencies",
-      "community_name": "Frontend App UI"
+      "id": "package_devdependencies"
     },
     {
       "label": "push-vercel-env.cjs",
@@ -306,8 +282,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "push-vercel-env.cjs",
-      "id": "scripts_push_vercel_env",
-      "community_name": "Learning Product Story"
+      "id": "scripts_push_vercel_env"
     },
     {
       "label": "{ execFileSync, spawnSync }",
@@ -317,8 +292,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "{ execfilesync, spawnsync }",
-      "id": "scripts_push_vercel_env_execfilesync_spawnsync",
-      "community_name": "Learning Product Story"
+      "id": "scripts_push_vercel_env_execfilesync_spawnsync"
     },
     {
       "label": "fs",
@@ -328,8 +302,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "fs",
-      "id": "scripts_push_vercel_env_fs",
-      "community_name": "Learning Product Story"
+      "id": "scripts_push_vercel_env_fs"
     },
     {
       "label": "path",
@@ -339,8 +312,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "path",
-      "id": "scripts_push_vercel_env_path",
-      "community_name": "Learning Product Story"
+      "id": "scripts_push_vercel_env_path"
     },
     {
       "label": "root",
@@ -350,8 +322,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "root",
-      "id": "scripts_push_vercel_env_root",
-      "community_name": "Learning Product Story"
+      "id": "scripts_push_vercel_env_root"
     },
     {
       "label": "envPath",
@@ -361,8 +332,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "envpath",
-      "id": "scripts_push_vercel_env_envpath",
-      "community_name": "Learning Product Story"
+      "id": "scripts_push_vercel_env_envpath"
     },
     {
       "label": "requiredKeys",
@@ -372,8 +342,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "requiredkeys",
-      "id": "scripts_push_vercel_env_requiredkeys",
-      "community_name": "Learning Product Story"
+      "id": "scripts_push_vercel_env_requiredkeys"
     },
     {
       "label": "optionalKeys",
@@ -383,8 +352,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "optionalkeys",
-      "id": "scripts_push_vercel_env_optionalkeys",
-      "community_name": "Learning Product Story"
+      "id": "scripts_push_vercel_env_optionalkeys"
     },
     {
       "label": "environments",
@@ -394,8 +362,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "environments",
-      "id": "scripts_push_vercel_env_environments",
-      "community_name": "Learning Product Story"
+      "id": "scripts_push_vercel_env_environments"
     },
     {
       "label": "env",
@@ -405,8 +372,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "env",
-      "id": "scripts_push_vercel_env_env",
-      "community_name": "Learning Product Story"
+      "id": "scripts_push_vercel_env_env"
     },
     {
       "label": "missing",
@@ -416,8 +382,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "missing",
-      "id": "scripts_push_vercel_env_missing",
-      "community_name": "Learning Product Story"
+      "id": "scripts_push_vercel_env_missing"
     },
     {
       "label": "ensureVercelProject()",
@@ -427,8 +392,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "ensurevercelproject()",
-      "id": "scripts_push_vercel_env_ensurevercelproject",
-      "community_name": "Learning Product Story"
+      "id": "scripts_push_vercel_env_ensurevercelproject"
     },
     {
       "label": "parseEnv()",
@@ -438,8 +402,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "parseenv()",
-      "id": "scripts_push_vercel_env_parseenv",
-      "community_name": "Learning Product Story"
+      "id": "scripts_push_vercel_env_parseenv"
     },
     {
       "label": "main.jsx",
@@ -449,8 +412,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": "main.jsx",
-      "id": "src_main",
-      "community_name": "Vercel Env Sync"
+      "id": "src_main"
     },
     {
       "label": "LandingPageErrorBoundary",
@@ -460,8 +422,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "landingpageerrorboundary",
-      "id": "src_main_landingpageerrorboundary",
-      "community_name": "Error Boundary"
+      "id": "src_main_landingpageerrorboundary"
     },
     {
       "label": ".constructor()",
@@ -471,8 +432,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": ".constructor()",
-      "id": "src_main_landingpageerrorboundary_constructor",
-      "community_name": "Error Boundary"
+      "id": "src_main_landingpageerrorboundary_constructor"
     },
     {
       "label": ".getDerivedStateFromError()",
@@ -482,8 +442,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": ".getderivedstatefromerror()",
-      "id": "src_main_landingpageerrorboundary_getderivedstatefromerror",
-      "community_name": "Error Boundary"
+      "id": "src_main_landingpageerrorboundary_getderivedstatefromerror"
     },
     {
       "label": ".componentDidCatch()",
@@ -493,8 +452,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": ".componentdidcatch()",
-      "id": "src_main_landingpageerrorboundary_componentdidcatch",
-      "community_name": "Error Boundary"
+      "id": "src_main_landingpageerrorboundary_componentdidcatch"
     },
     {
       "label": ".render()",
@@ -504,8 +462,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": ".render()",
-      "id": "src_main_landingpageerrorboundary_render",
-      "community_name": "Error Boundary"
+      "id": "src_main_landingpageerrorboundary_render"
     },
     {
       "label": "rootElement",
@@ -515,8 +472,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": "rootelement",
-      "id": "src_main_rootelement",
-      "community_name": "Vercel Env Sync"
+      "id": "src_main_rootelement"
     },
     {
       "label": "SabiPass AI",
@@ -529,8 +485,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "sabipass ai",
-      "id": "index_sabipass_ai",
-      "community_name": "Package Scripts"
+      "id": "index_sabipass_ai"
     },
     {
       "label": "Socratic Mobile Tutor",
@@ -543,8 +498,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "socratic mobile tutor",
-      "id": "index_socratic_mobile_tutor",
-      "community_name": "Package Scripts"
+      "id": "index_socratic_mobile_tutor"
     },
     {
       "label": "Nigerian Exam Preparation",
@@ -557,8 +511,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "nigerian exam preparation",
-      "id": "index_nigerian_exam_prep",
-      "community_name": "Package Scripts"
+      "id": "index_nigerian_exam_prep"
     },
     {
       "label": "WAEC, NECO, and JAMB",
@@ -571,8 +524,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "waec, neco, and jamb",
-      "id": "index_waec_neco_jamb",
-      "community_name": "Package Scripts"
+      "id": "index_waec_neco_jamb"
     },
     {
       "label": "Reasoning Not Answer Copying",
@@ -585,8 +537,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "reasoning not answer copying",
-      "id": "index_reasoning_not_answer_copying",
-      "community_name": "Package Scripts"
+      "id": "index_reasoning_not_answer_copying"
     },
     {
       "label": "Mastery Building",
@@ -599,8 +550,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "mastery building",
-      "id": "index_mastery_building",
-      "community_name": "Package Scripts"
+      "id": "index_mastery_building"
     },
     {
       "label": "Waitlist Conversion",
@@ -613,8 +563,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "waitlist conversion",
-      "id": "index_waitlist_conversion",
-      "community_name": "Package Scripts"
+      "id": "index_waitlist_conversion"
     },
     {
       "label": "African Students Classroom",
@@ -627,8 +576,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "african students classroom",
-      "id": "public_images_african_students_classroom_african_students_classroom",
-      "community_name": "Package Scripts"
+      "id": "public_images_african_students_classroom_african_students_classroom"
     },
     {
       "label": "Peer Classroom Study",
@@ -641,8 +589,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "peer classroom study",
-      "id": "public_images_african_students_classroom_peer_classroom_study",
-      "community_name": "Package Scripts"
+      "id": "public_images_african_students_classroom_peer_classroom_study"
     },
     {
       "label": "School Uniform Students",
@@ -655,8 +602,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "school uniform students",
-      "id": "public_images_african_students_classroom_school_uniform_students",
-      "community_name": "Package Scripts"
+      "id": "public_images_african_students_classroom_school_uniform_students"
     },
     {
       "label": "Family Study Home",
@@ -669,8 +615,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "family study home",
-      "id": "public_images_family_study_home_family_study_home",
-      "community_name": "Package Scripts"
+      "id": "public_images_family_study_home_family_study_home"
     },
     {
       "label": "Home Learning Environment",
@@ -683,8 +628,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "home learning environment",
-      "id": "public_images_family_study_home_home_learning_environment",
-      "community_name": "Package Scripts"
+      "id": "public_images_family_study_home_home_learning_environment"
     },
     {
       "label": "Family Supported Study",
@@ -697,8 +641,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "family supported study",
-      "id": "public_images_family_study_home_family_supported_study",
-      "community_name": "Package Scripts"
+      "id": "public_images_family_study_home_family_supported_study"
     },
     {
       "label": "Teacher Classroom Hands Raised",
@@ -711,8 +654,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "teacher classroom hands raised",
-      "id": "public_images_teacher_classroom_hands_raised_teacher_classroom_hands_raised",
-      "community_name": "Package Scripts"
+      "id": "public_images_teacher_classroom_hands_raised_teacher_classroom_hands_raised"
     },
     {
       "label": "Interactive Classroom",
@@ -725,8 +667,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "interactive classroom",
-      "id": "public_images_teacher_classroom_hands_raised_interactive_classroom",
-      "community_name": "Package Scripts"
+      "id": "public_images_teacher_classroom_hands_raised_interactive_classroom"
     },
     {
       "label": "Teacher Guided Questioning",
@@ -739,8 +680,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "teacher guided questioning",
-      "id": "public_images_teacher_classroom_hands_raised_teacher_guided_questioning",
-      "community_name": "Package Scripts"
+      "id": "public_images_teacher_classroom_hands_raised_teacher_guided_questioning"
     },
     {
       "label": "explainer.js",
@@ -748,10 +688,9 @@
       "source_file": "api/explainer.js",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 9,
-      "norm_label": "explainer.js",
       "id": "api_explainer",
-      "community_name": "Waitlist API"
+      "community": 9,
+      "norm_label": "explainer.js"
     },
     {
       "label": "waitlist.js",
@@ -759,10 +698,9 @@
       "source_file": "api/waitlist.js",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 7,
-      "norm_label": "waitlist.js",
       "id": "api_waitlist",
-      "community_name": "Exam Prep Context"
+      "community": 7,
+      "norm_label": "waitlist.js"
     },
     {
       "label": "allowedRoles",
@@ -770,10 +708,9 @@
       "source_file": "api/waitlist.js",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 7,
-      "norm_label": "allowedroles",
       "id": "api_waitlist_allowedroles",
-      "community_name": "Exam Prep Context"
+      "community": 7,
+      "norm_label": "allowedroles"
     },
     {
       "label": "sendConfirmationEmail()",
@@ -781,10 +718,9 @@
       "source_file": "api/waitlist.js",
       "source_location": "L179",
       "_origin": "ast",
-      "community": 7,
-      "norm_label": "sendconfirmationemail()",
       "id": "api_waitlist_sendconfirmationemail",
-      "community_name": "Exam Prep Context"
+      "community": 7,
+      "norm_label": "sendconfirmationemail()"
     },
     {
       "label": "escapeHtml()",
@@ -792,10 +728,9 @@
       "source_file": "api/waitlist.js",
       "source_location": "L195",
       "_origin": "ast",
-      "community": 7,
-      "norm_label": "escapehtml()",
       "id": "api_waitlist_escapehtml",
-      "community_name": "Exam Prep Context"
+      "community": 7,
+      "norm_label": "escapehtml()"
     },
     {
       "label": "buildConfirmationEmail()",
@@ -803,10 +738,9 @@
       "source_file": "api/waitlist.js",
       "source_location": "L204",
       "_origin": "ast",
-      "community": 7,
-      "norm_label": "buildconfirmationemail()",
       "id": "api_waitlist_buildconfirmationemail",
-      "community_name": "Exam Prep Context"
+      "community": 7,
+      "norm_label": "buildconfirmationemail()"
     },
     {
       "label": "App.jsx",
@@ -814,10 +748,9 @@
       "source_file": "src/App.jsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "app.jsx",
       "id": "src_app",
-      "community_name": "Vercel Env Sync"
+      "community": 1,
+      "norm_label": "app.jsx"
     },
     {
       "label": "imageAssets",
@@ -825,10 +758,9 @@
       "source_file": "src/App.jsx",
       "source_location": "L21",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "imageassets",
       "id": "src_app_imageassets",
-      "community_name": "Vercel Env Sync"
+      "community": 1,
+      "norm_label": "imageassets"
     },
     {
       "label": "heroSlides",
@@ -836,10 +768,9 @@
       "source_file": "src/App.jsx",
       "source_location": "L27",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "heroslides",
       "id": "src_app_heroslides",
-      "community_name": "Vercel Env Sync"
+      "community": 1,
+      "norm_label": "heroslides"
     },
     {
       "label": "examFlows",
@@ -847,10 +778,9 @@
       "source_file": "src/App.jsx",
       "source_location": "L42",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "examflows",
       "id": "src_app_examflows",
-      "community_name": "Vercel Env Sync"
+      "community": 1,
+      "norm_label": "examflows"
     },
     {
       "label": "topicFlows",
@@ -858,10 +788,9 @@
       "source_file": "src/App.jsx",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "topicflows",
       "id": "src_app_topicflows",
-      "community_name": "Vercel Env Sync"
+      "community": 1,
+      "norm_label": "topicflows"
     },
     {
       "label": "roles",
@@ -869,10 +798,9 @@
       "source_file": "src/App.jsx",
       "source_location": "L87",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "roles",
       "id": "src_app_roles",
-      "community_name": "Vercel Env Sync"
+      "community": 1,
+      "norm_label": "roles"
     },
     {
       "label": "voiceNotes",
@@ -880,10 +808,9 @@
       "source_file": "src/App.jsx",
       "source_location": "L126",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "voicenotes",
       "id": "src_app_voicenotes",
-      "community_name": "Vercel Env Sync"
+      "community": 1,
+      "norm_label": "voicenotes"
     },
     {
       "label": "explainerStarter",
@@ -891,10 +818,9 @@
       "source_file": "src/App.jsx",
       "source_location": "L156",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "explainerstarter",
       "id": "src_app_explainerstarter",
-      "community_name": "Vercel Env Sync"
+      "community": 1,
+      "norm_label": "explainerstarter"
     },
     {
       "label": "readinessDate",
@@ -902,10 +828,9 @@
       "source_file": "src/App.jsx",
       "source_location": "L162",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "readinessdate",
       "id": "src_app_readinessdate",
-      "community_name": "Vercel Env Sync"
+      "community": 1,
+      "norm_label": "readinessdate"
     },
     {
       "label": "getReadinessDays()",
@@ -913,10 +838,9 @@
       "source_file": "src/App.jsx",
       "source_location": "L164",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "getreadinessdays()",
       "id": "src_app_getreadinessdays",
-      "community_name": "Vercel Env Sync"
+      "community": 1,
+      "norm_label": "getreadinessdays()"
     },
     {
       "label": "useScrollMotion()",
@@ -924,10 +848,9 @@
       "source_file": "src/App.jsx",
       "source_location": "L169",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "usescrollmotion()",
       "id": "src_app_usescrollmotion",
-      "community_name": "Vercel Env Sync"
+      "community": 1,
+      "norm_label": "usescrollmotion()"
     },
     {
       "label": "MagneticButton()",
@@ -935,10 +858,9 @@
       "source_file": "src/App.jsx",
       "source_location": "L202",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "magneticbutton()",
       "id": "src_app_magneticbutton",
-      "community_name": "Vercel Env Sync"
+      "community": 1,
+      "norm_label": "magneticbutton()"
     },
     {
       "label": "App()",
@@ -946,10 +868,9 @@
       "source_file": "src/App.jsx",
       "source_location": "L225",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "app()",
       "id": "src_app_app",
-      "community_name": "Vercel Env Sync"
+      "community": 1,
+      "norm_label": "app()"
     },
     {
       "label": "static-build.test.cjs",
@@ -957,10 +878,9 @@
       "source_file": "tests/static-build.test.cjs",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 4,
-      "norm_label": "static-build.test.cjs",
       "id": "tests_static_build_test",
-      "community_name": "React Vite Dependencies"
+      "community": 4,
+      "norm_label": "static-build.test.cjs"
     },
     {
       "label": "assert",
@@ -968,10 +888,9 @@
       "source_file": "tests/static-build.test.cjs",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 4,
-      "norm_label": "assert",
       "id": "tests_static_build_test_assert",
-      "community_name": "React Vite Dependencies"
+      "community": 4,
+      "norm_label": "assert"
     },
     {
       "label": "fs",
@@ -979,10 +898,9 @@
       "source_file": "tests/static-build.test.cjs",
       "source_location": "L2",
       "_origin": "ast",
-      "community": 4,
-      "norm_label": "fs",
       "id": "tests_static_build_test_fs",
-      "community_name": "React Vite Dependencies"
+      "community": 4,
+      "norm_label": "fs"
     },
     {
       "label": "path",
@@ -990,10 +908,9 @@
       "source_file": "tests/static-build.test.cjs",
       "source_location": "L3",
       "_origin": "ast",
-      "community": 4,
-      "norm_label": "path",
       "id": "tests_static_build_test_path",
-      "community_name": "React Vite Dependencies"
+      "community": 4,
+      "norm_label": "path"
     },
     {
       "label": "root",
@@ -1001,10 +918,9 @@
       "source_file": "tests/static-build.test.cjs",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 4,
-      "norm_label": "root",
       "id": "tests_static_build_test_root",
-      "community_name": "React Vite Dependencies"
+      "community": 4,
+      "norm_label": "root"
     },
     {
       "label": "read()",
@@ -1012,10 +928,9 @@
       "source_file": "tests/static-build.test.cjs",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 4,
-      "norm_label": "read()",
       "id": "tests_static_build_test_read",
-      "community_name": "React Vite Dependencies"
+      "community": 4,
+      "norm_label": "read()"
     },
     {
       "label": "packageJson",
@@ -1023,10 +938,9 @@
       "source_file": "tests/static-build.test.cjs",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 4,
-      "norm_label": "packagejson",
       "id": "tests_static_build_test_packagejson",
-      "community_name": "React Vite Dependencies"
+      "community": 4,
+      "norm_label": "packagejson"
     },
     {
       "label": "html",
@@ -1034,10 +948,9 @@
       "source_file": "tests/static-build.test.cjs",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 4,
-      "norm_label": "html",
       "id": "tests_static_build_test_html",
-      "community_name": "React Vite Dependencies"
+      "community": 4,
+      "norm_label": "html"
     },
     {
       "label": "app",
@@ -1045,10 +958,9 @@
       "source_file": "tests/static-build.test.cjs",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 4,
-      "norm_label": "app",
       "id": "tests_static_build_test_app",
-      "community_name": "React Vite Dependencies"
+      "community": 4,
+      "norm_label": "app"
     },
     {
       "label": "css",
@@ -1056,10 +968,9 @@
       "source_file": "tests/static-build.test.cjs",
       "source_location": "L11",
       "_origin": "ast",
-      "community": 4,
-      "norm_label": "css",
       "id": "tests_static_build_test_css",
-      "community_name": "React Vite Dependencies"
+      "community": 4,
+      "norm_label": "css"
     },
     {
       "label": "api",
@@ -1067,10 +978,9 @@
       "source_file": "tests/static-build.test.cjs",
       "source_location": "L12",
       "_origin": "ast",
-      "community": 4,
-      "norm_label": "api",
       "id": "tests_static_build_test_api",
-      "community_name": "React Vite Dependencies"
+      "community": 4,
+      "norm_label": "api"
     },
     {
       "label": "explainerApi",
@@ -1078,10 +988,9 @@
       "source_file": "tests/static-build.test.cjs",
       "source_location": "L13",
       "_origin": "ast",
-      "community": 4,
-      "norm_label": "explainerapi",
       "id": "tests_static_build_test_explainerapi",
-      "community_name": "React Vite Dependencies"
+      "community": 4,
+      "norm_label": "explainerapi"
     },
     {
       "label": "waitlist-api.test.cjs",
@@ -1089,10 +998,9 @@
       "source_file": "tests/waitlist-api.test.cjs",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 6,
-      "norm_label": "waitlist-api.test.cjs",
       "id": "tests_waitlist_api_test",
-      "community_name": "Waitlist API Tests"
+      "community": 6,
+      "norm_label": "waitlist-api.test.cjs"
     },
     {
       "label": "assert",
@@ -1100,10 +1008,9 @@
       "source_file": "tests/waitlist-api.test.cjs",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 6,
-      "norm_label": "assert",
       "id": "tests_waitlist_api_test_assert",
-      "community_name": "Waitlist API Tests"
+      "community": 6,
+      "norm_label": "assert"
     },
     {
       "label": "path",
@@ -1111,10 +1018,9 @@
       "source_file": "tests/waitlist-api.test.cjs",
       "source_location": "L2",
       "_origin": "ast",
-      "community": 6,
-      "norm_label": "path",
       "id": "tests_waitlist_api_test_path",
-      "community_name": "Waitlist API Tests"
+      "community": 6,
+      "norm_label": "path"
     },
     {
       "label": "handlerPath",
@@ -1122,10 +1028,9 @@
       "source_file": "tests/waitlist-api.test.cjs",
       "source_location": "L4",
       "_origin": "ast",
-      "community": 6,
-      "norm_label": "handlerpath",
       "id": "tests_waitlist_api_test_handlerpath",
-      "community_name": "Waitlist API Tests"
+      "community": 6,
+      "norm_label": "handlerpath"
     },
     {
       "label": "originalEnv",
@@ -1133,10 +1038,9 @@
       "source_file": "tests/waitlist-api.test.cjs",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 6,
-      "norm_label": "originalenv",
       "id": "tests_waitlist_api_test_originalenv",
-      "community_name": "Waitlist API Tests"
+      "community": 6,
+      "norm_label": "originalenv"
     },
     {
       "label": "loadHandler()",
@@ -1144,10 +1048,9 @@
       "source_file": "tests/waitlist-api.test.cjs",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 6,
-      "norm_label": "loadhandler()",
       "id": "tests_waitlist_api_test_loadhandler",
-      "community_name": "Waitlist API Tests"
+      "community": 6,
+      "norm_label": "loadhandler()"
     },
     {
       "label": "createResponse()",
@@ -1155,10 +1058,9 @@
       "source_file": "tests/waitlist-api.test.cjs",
       "source_location": "L15",
       "_origin": "ast",
-      "community": 6,
-      "norm_label": "createresponse()",
       "id": "tests_waitlist_api_test_createresponse",
-      "community_name": "Waitlist API Tests"
+      "community": 6,
+      "norm_label": "createresponse()"
     },
     {
       "label": "invoke()",
@@ -1166,10 +1068,9 @@
       "source_file": "tests/waitlist-api.test.cjs",
       "source_location": "L34",
       "_origin": "ast",
-      "community": 6,
-      "norm_label": "invoke()",
       "id": "tests_waitlist_api_test_invoke",
-      "community_name": "Waitlist API Tests"
+      "community": 6,
+      "norm_label": "invoke()"
     },
     {
       "label": "createFetchMock()",
@@ -1177,10 +1078,9 @@
       "source_file": "tests/waitlist-api.test.cjs",
       "source_location": "L40",
       "_origin": "ast",
-      "community": 6,
-      "norm_label": "createfetchmock()",
       "id": "tests_waitlist_api_test_createfetchmock",
-      "community_name": "Waitlist API Tests"
+      "community": 6,
+      "norm_label": "createfetchmock()"
     },
     {
       "label": "validEnv",
@@ -1188,10 +1088,9 @@
       "source_file": "tests/waitlist-api.test.cjs",
       "source_location": "L59",
       "_origin": "ast",
-      "community": 6,
-      "norm_label": "validenv",
       "id": "tests_waitlist_api_test_validenv",
-      "community_name": "Waitlist API Tests"
+      "community": 6,
+      "norm_label": "validenv"
     },
     {
       "label": "run()",
@@ -1199,10 +1098,9 @@
       "source_file": "tests/waitlist-api.test.cjs",
       "source_location": "L65",
       "_origin": "ast",
-      "community": 6,
-      "norm_label": "run()",
       "id": "tests_waitlist_api_test_run",
-      "community_name": "Waitlist API Tests"
+      "community": 6,
+      "norm_label": "run()"
     }
   ],
   "links": [
@@ -1853,9 +1751,9 @@
       "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "api_waitlist",
-      "target": "api_waitlist_allowedroles"
+      "target": "api_waitlist_allowedroles",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1864,9 +1762,9 @@
       "source_location": "L204",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "api_waitlist",
-      "target": "api_waitlist_buildconfirmationemail"
+      "target": "api_waitlist_buildconfirmationemail",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1875,9 +1773,9 @@
       "source_location": "L195",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "api_waitlist",
-      "target": "api_waitlist_escapehtml"
+      "target": "api_waitlist_escapehtml",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1886,9 +1784,9 @@
       "source_location": "L179",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "api_waitlist",
-      "target": "api_waitlist_sendconfirmationemail"
+      "target": "api_waitlist_sendconfirmationemail",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -1898,9 +1796,9 @@
       "source_location": "L190",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "api_waitlist_sendconfirmationemail",
-      "target": "api_waitlist_buildconfirmationemail"
+      "target": "api_waitlist_buildconfirmationemail",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -1910,9 +1808,9 @@
       "source_location": "L205",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "api_waitlist_buildconfirmationemail",
-      "target": "api_waitlist_escapehtml"
+      "target": "api_waitlist_escapehtml",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1921,9 +1819,9 @@
       "source_location": "L225",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_app",
-      "target": "src_app_app"
+      "target": "src_app_app",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1932,9 +1830,9 @@
       "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_app",
-      "target": "src_app_examflows"
+      "target": "src_app_examflows",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1943,9 +1841,9 @@
       "source_location": "L156",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_app",
-      "target": "src_app_explainerstarter"
+      "target": "src_app_explainerstarter",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1954,9 +1852,9 @@
       "source_location": "L164",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_app",
-      "target": "src_app_getreadinessdays"
+      "target": "src_app_getreadinessdays",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1965,9 +1863,9 @@
       "source_location": "L27",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_app",
-      "target": "src_app_heroslides"
+      "target": "src_app_heroslides",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1976,9 +1874,9 @@
       "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_app",
-      "target": "src_app_imageassets"
+      "target": "src_app_imageassets",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1987,9 +1885,9 @@
       "source_location": "L202",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_app",
-      "target": "src_app_magneticbutton"
+      "target": "src_app_magneticbutton",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1998,9 +1896,9 @@
       "source_location": "L162",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_app",
-      "target": "src_app_readinessdate"
+      "target": "src_app_readinessdate",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2009,9 +1907,9 @@
       "source_location": "L87",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_app",
-      "target": "src_app_roles"
+      "target": "src_app_roles",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2020,9 +1918,9 @@
       "source_location": "L63",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_app",
-      "target": "src_app_topicflows"
+      "target": "src_app_topicflows",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2031,9 +1929,9 @@
       "source_location": "L169",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_app",
-      "target": "src_app_usescrollmotion"
+      "target": "src_app_usescrollmotion",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2042,9 +1940,9 @@
       "source_location": "L126",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_app",
-      "target": "src_app_voicenotes"
+      "target": "src_app_voicenotes",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -2054,9 +1952,9 @@
       "source_location": "L248",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_app_app",
-      "target": "src_app_getreadinessdays"
+      "target": "src_app_getreadinessdays",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -2066,9 +1964,9 @@
       "source_location": "L226",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_app_app",
-      "target": "src_app_usescrollmotion"
+      "target": "src_app_usescrollmotion",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2077,9 +1975,9 @@
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_static_build_test",
-      "target": "tests_static_build_test_api"
+      "target": "tests_static_build_test_api",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2088,9 +1986,9 @@
       "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_static_build_test",
-      "target": "tests_static_build_test_app"
+      "target": "tests_static_build_test_app",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2099,9 +1997,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_static_build_test",
-      "target": "tests_static_build_test_assert"
+      "target": "tests_static_build_test_assert",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2110,9 +2008,9 @@
       "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_static_build_test",
-      "target": "tests_static_build_test_css"
+      "target": "tests_static_build_test_css",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2121,9 +2019,9 @@
       "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_static_build_test",
-      "target": "tests_static_build_test_explainerapi"
+      "target": "tests_static_build_test_explainerapi",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2132,9 +2030,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_static_build_test",
-      "target": "tests_static_build_test_fs"
+      "target": "tests_static_build_test_fs",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2143,9 +2041,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_static_build_test",
-      "target": "tests_static_build_test_html"
+      "target": "tests_static_build_test_html",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2154,9 +2052,9 @@
       "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_static_build_test",
-      "target": "tests_static_build_test_packagejson"
+      "target": "tests_static_build_test_packagejson",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2165,9 +2063,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_static_build_test",
-      "target": "tests_static_build_test_path"
+      "target": "tests_static_build_test_path",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2176,9 +2074,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_static_build_test",
-      "target": "tests_static_build_test_read"
+      "target": "tests_static_build_test_read",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2187,9 +2085,9 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_static_build_test",
-      "target": "tests_static_build_test_root"
+      "target": "tests_static_build_test_root",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2198,9 +2096,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_waitlist_api_test",
-      "target": "tests_waitlist_api_test_assert"
+      "target": "tests_waitlist_api_test_assert",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2209,9 +2107,9 @@
       "source_location": "L40",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_waitlist_api_test",
-      "target": "tests_waitlist_api_test_createfetchmock"
+      "target": "tests_waitlist_api_test_createfetchmock",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2220,9 +2118,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_waitlist_api_test",
-      "target": "tests_waitlist_api_test_createresponse"
+      "target": "tests_waitlist_api_test_createresponse",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2231,9 +2129,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_waitlist_api_test",
-      "target": "tests_waitlist_api_test_handlerpath"
+      "target": "tests_waitlist_api_test_handlerpath",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2242,9 +2140,9 @@
       "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_waitlist_api_test",
-      "target": "tests_waitlist_api_test_invoke"
+      "target": "tests_waitlist_api_test_invoke",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2253,9 +2151,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_waitlist_api_test",
-      "target": "tests_waitlist_api_test_loadhandler"
+      "target": "tests_waitlist_api_test_loadhandler",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2264,9 +2162,9 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_waitlist_api_test",
-      "target": "tests_waitlist_api_test_originalenv"
+      "target": "tests_waitlist_api_test_originalenv",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2275,9 +2173,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_waitlist_api_test",
-      "target": "tests_waitlist_api_test_path"
+      "target": "tests_waitlist_api_test_path",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2286,9 +2184,9 @@
       "source_location": "L65",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_waitlist_api_test",
-      "target": "tests_waitlist_api_test_run"
+      "target": "tests_waitlist_api_test_run",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2297,9 +2195,9 @@
       "source_location": "L59",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_waitlist_api_test",
-      "target": "tests_waitlist_api_test_validenv"
+      "target": "tests_waitlist_api_test_validenv",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -2309,9 +2207,9 @@
       "source_location": "L69",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_waitlist_api_test_run",
-      "target": "tests_waitlist_api_test_loadhandler"
+      "target": "tests_waitlist_api_test_loadhandler",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -2321,9 +2219,9 @@
       "source_location": "L35",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_waitlist_api_test_invoke",
-      "target": "tests_waitlist_api_test_createresponse"
+      "target": "tests_waitlist_api_test_createresponse",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -2333,9 +2231,9 @@
       "source_location": "L70",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_waitlist_api_test_run",
-      "target": "tests_waitlist_api_test_invoke"
+      "target": "tests_waitlist_api_test_invoke",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -2345,9 +2243,9 @@
       "source_location": "L123",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "tests_waitlist_api_test_run",
-      "target": "tests_waitlist_api_test_createfetchmock"
+      "target": "tests_waitlist_api_test_createfetchmock",
+      "confidence_score": 1.0
     }
   ],
   "hyperedges": [

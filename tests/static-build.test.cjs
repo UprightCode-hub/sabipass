@@ -8,6 +8,12 @@ const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
 const packageJson = JSON.parse(read("package.json"));
 const html = read("index.html");
 const app = read("src/App.jsx");
+const src = [
+  read("src/App.jsx"),
+  read("src/components/Nav.jsx"),
+  read("src/components/SabiDemo.jsx"),
+  read("src/components/WaitlistForm.jsx")
+].join("\n");
 const css = read("src/styles.css");
 const api = read("api/waitlist.js");
 const explainerApi = read("api/explainer.js");
@@ -20,26 +26,34 @@ assert.match(html, /<div id="root">/);
 assert.match(html, /fallback-page/);
 assert.match(html, /\/src\/main\.jsx/);
 
-assert.match(app, /fetch\("\/api\/waitlist"/);
-assert.match(app, /SabiPass AI/);
-assert.match(app, /Socratic/);
-assert.match(app, /WAEC, NECO, and JAMB/);
-assert.match(app, /\/images\/african-students-classroom\.jpg/);
-assert.match(app, /Socratic Tutor Sandbox/);
-assert.match(app, /Simulate Network Outage/);
-assert.match(app, /18 answers saved offline/);
-assert.match(app, /Intentional Mistake/);
-assert.match(app, /Socratic Redirect/);
-assert.match(app, /reasoning mastery/);
-assert.match(app, /simulated voice note/);
-assert.match(app, /School Principal/);
-assert.match(app, /Join 500\+ students, parents, and school partners/);
-assert.match(app, /fetch\("\/api\/explainer"/);
-assert.match(app, /role/);
-assert.match(app, /data-scroll-tilt/);
-assert.doesNotMatch(app, /images\.unsplash\.com/);
-assert.doesNotMatch(app, /alert\(/);
-assert.doesNotMatch(app, /RESEND_API_KEY|RESEND_FROM|SUPABASE_ANON_KEY/);
+assert.match(src, /fetch\("\/api\/waitlist"/);
+assert.match(src, /fetch\("\/api\/explainer"/);
+assert.match(src, /SabiPass AI/);
+assert.match(src, /Stuck on a WAEC question\? SabiPass asks you the next question — not the answer\./);
+assert.match(src, /Try it now/);
+assert.match(src, /Try it with no data/);
+assert.match(src, /SabiPass is helping right now/);
+assert.match(src, /Make the wrong choice/);
+assert.match(src, /See the hint/);
+assert.match(src, /Get early access\./);
+assert.match(src, /School Principal/);
+assert.match(src, /\/how-it-works/);
+assert.match(src, /\/images\/african-students-classroom\.jpg/);
+assert.doesNotMatch(src, /images\.unsplash\.com/);
+assert.doesNotMatch(src, /alert\(/);
+assert.doesNotMatch(src, /RESEND_API_KEY|RESEND_FROM|SUPABASE_ANON_KEY/);
+const cutCopy = {
+  crowd: ["Join", "5" + "00+", "students", "parents", "school partners"].join(".*"),
+  mastery: ["7", "2", "%", " mastery ", "signal"].join(""),
+  reports: ["Parent", "-ready ", "reports"].join(""),
+  queue: ["Private ", "beta ", "queue"].join(""),
+  voice: ["simulated ", "voice ", "note"].join(""),
+  boilerplate: ["Submits ", "securely"].join("")
+};
+
+Object.values(cutCopy).forEach((pattern) => {
+  assert.doesNotMatch(src, new RegExp(pattern));
+});
 
 assert.match(api, /BREVO_API_KEY/);
 assert.match(api, /SUPABASE_ANON_KEY/);
@@ -50,14 +64,14 @@ assert.match(api, /htmlContent/);
 assert.match(api, /buildConfirmationEmail/);
 assert.match(explainerApi, /GROQ_API_KEY/);
 assert.match(explainerApi, /SabiPass AI Explainer/);
+assert.match(explainerApi, /TWO MODES FOR YOU/);
 
 assert.doesNotMatch(css, /0070f3|00dfd8|gradient\(to right|purple|indigo/i);
 assert.match(css, /prefers-reduced-motion/);
-assert.match(css, /Instrument\+Serif/);
-assert.match(css, /--forest: #1b3b2b/);
-assert.match(css, /--amber: #e07a5f/);
-assert.match(css, /rotateX\(calc\(var\(--scroll-progress/);
-assert.match(css, /transform: translate\(2px, 2px\) scale\(0\.98\)/);
-assert.match(css, /waveform/);
+assert.match(css, /Fraunces/);
+assert.match(css, /--board: #12372a/);
+assert.match(css, /--lagos-blue: #245f73/);
+assert.match(css, /@media \(hover: hover\) and \(pointer: fine\)/);
+assert.match(css, /scroll-snap-type: x mandatory/);
 
 console.log("static project tests passed");
