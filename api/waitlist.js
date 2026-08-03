@@ -22,7 +22,7 @@ module.exports = async (req, res) => {
   }
 
   if (!SUPABASE_URL || !SUPABASE_REST_KEY) {
-    console.log("[waitlist] Missing required Supabase environment variables");
+    console.error("[waitlist] Missing required Supabase environment variables");
     res.status(500).json({
       success: false,
       error: "Missing Supabase environment variables.",
@@ -46,7 +46,7 @@ module.exports = async (req, res) => {
   const email = String(body.email || "")
     .trim()
     .toLowerCase();
-  const role = String(body.role || body.Role || body.class_level || "").trim();
+  const role = String(body.role || "").trim();
 
   if (!name || !email || !role) {
     res.status(400).json({
@@ -90,12 +90,7 @@ module.exports = async (req, res) => {
 
     if (!supabaseResponse.ok) {
       const errorText = await supabaseResponse.text();
-      const normalizedErrorText = String(errorText || "").toLowerCase();
-      const isDuplicateEmail =
-        normalizedErrorText.includes("unique_email") ||
-        normalizedErrorText.includes("23505") ||
-        normalizedErrorText.includes("duplicate") ||
-        normalizedErrorText.includes("already exists");
+      const isDuplicateEmail = supabaseResponse.status === 409;
 
       if (isDuplicateEmail) {
         console.log("[waitlist] Duplicate email detected; retrying confirmation email", {
@@ -112,19 +107,7 @@ module.exports = async (req, res) => {
         }
 
         try {
-          const retryBrevoResponse = await fetch("https://api.brevo.com/v3/smtp/email", {
-            method: "POST",
-            headers: {
-              "api-key": BREVO_API_KEY,
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              sender: { name: "Sabipass", email: "sabipass.edu@gmail.com" },
-              to: [{ email }],
-              subject: "Your SabiPass waitlist request is confirmed",
-              htmlContent: buildConfirmationEmail({ name, role }),
-            }),
-          });
+          const retryBrevoResponse = await sendConfirmationEmail({ email, name, role });
 
           if (!retryBrevoResponse.ok) {
             res.status(200).json({
@@ -160,7 +143,7 @@ module.exports = async (req, res) => {
     console.log("[waitlist] Supabase insert succeeded", { email, role });
 
     if (!BREVO_API_KEY) {
-      console.log(
+      console.warn(
         "[waitlist] BREVO_API_KEY is not configured; skipping confirmation email",
       );
       res.status(200).json({
@@ -170,19 +153,7 @@ module.exports = async (req, res) => {
       return;
     }
 
-    const brevoResponse = await fetch("https://api.brevo.com/v3/smtp/email", {
-      method: "POST",
-      headers: {
-        "api-key": BREVO_API_KEY,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        sender: { name: "Sabipass", email: "sabipass.edu@gmail.com" },
-        to: [{ email }],
-        subject: "Your SabiPass waitlist request is confirmed",
-        htmlContent: buildConfirmationEmail({ name, role }),
-      }),
-    });
+    const brevoResponse = await sendConfirmationEmail({ email, name, role });
 
     if (!brevoResponse.ok) {
       const errorText = await brevoResponse.text();
@@ -204,6 +175,22 @@ module.exports = async (req, res) => {
     });
   }
 };
+
+async function sendConfirmationEmail({ email, name, role }) {
+  return fetch("https://api.brevo.com/v3/smtp/email", {
+    method: "POST",
+    headers: {
+      "api-key": BREVO_API_KEY,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      sender: { name: "Sabipass", email: "sabipass.edu@gmail.com" },
+      to: [{ email }],
+      subject: "Your SabiPass waitlist request is confirmed",
+      htmlContent: buildConfirmationEmail({ name, role }),
+    }),
+  });
+}
 
 function escapeHtml(value) {
   return String(value)
